@@ -506,3 +506,15 @@ requires:
 command: glmark2-es2 --data-path "$CHECKBOX_RUNTIME"/usr/share/glmark2/
 estimated_duration: 60.5
 _summary: Run OpenGL ES 2.0 X11 benchmark on the {product} video card
+
+category_id: com.canonical.plainbox::graphics
+id: graphics/i915_dmc_firmware
+_summary: verify dmc firmware availability
+_purpose:
+ verify i915 dmc firmware availability
+plugin: shell
+user: root
+requires:
+ graphics_card.driver in ['i915']
+command: cat /sys/kernel/debug/dri/0/i915_dmc_info | grep -w "i915.*.bin"
+
